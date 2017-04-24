@@ -1,0 +1,13 @@
+[Authentication]
+client_id = 1234
+client_secret = 1234567890abcdef
+code =
+access_token =
+
+[Home]
+lat = 19.205068
+long = -155.477657
+
+[Work]
+lat = 21.382394
+long = 39.853592
