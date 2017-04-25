@@ -24,6 +24,7 @@ class PyStrava:
             uri = 'http://lardner.io:8282/authorized'
             request = 'authorize?client_id={}&response_type=code&redirect_uri={}&scope=view_private,write'.format(
                 client_id, uri)
+            print('Opening webpage at: '+oauth_base + request)
             webbrowser.open(oauth_base + request)
         else:
             r = requests.post(oauth_base + 'token',
