@@ -62,8 +62,8 @@ class PyStrava:
                     Keys[Select] = True
 
             if all(Keys.values()):
-                print('{} is a commute.'.format(activity['id']))
                 if not activity['commute']:
+                    print('{} is a commute.'.format(activity['id']))
                     print('Updating Strava...')
                     self.set_commute(activity['id'])
 
