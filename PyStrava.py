@@ -6,6 +6,7 @@ import json
 
 class PyStrava:
     def __init__(self):
+        self.is_authenticated = False
         self.Config = configparser.ConfigParser()
         self.Config.read('config.ini')
         client_id = self.Config['Authentication']['client_id']
@@ -16,6 +17,7 @@ class PyStrava:
         self.api = 'https://www.strava.com/api/v3/'
 
         if self.access_token:
+            self.is_authenticated = True 
             return
 
         if not client_code:
@@ -30,6 +32,7 @@ class PyStrava:
             self.Config.set('Authentication', 'access_token', auth_response['access_token'])
             with open('config.ini', 'w') as configfile:
                 self.Config.write(configfile)
+            self.is_authenticated = True 
 
     def get_activities(self):
         bearer = 'Bearer {}'.format(self.access_token)
@@ -70,4 +73,5 @@ class PyStrava:
 
 if __name__ == '__main__':
     strava = PyStrava()
-    strava.update_commutes()
+    if strava.is_authenticated:
+        strava.update_commutes()
